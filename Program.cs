@@ -1,4 +1,5 @@
-﻿using System.Xml.Schema;
+﻿using System.Data;
+using System.Xml.Schema;
 
 namespace EmployeeWageApp
 {
@@ -10,13 +11,15 @@ namespace EmployeeWageApp
             const int Full_Time = 2;
             const int Emp_Rate_Per_Hour = 20;
             const int Num_Of_Working_Days = 20;
+            const int Max_Hrs_In_Month = 100;
 
             
             int empHrs = 0;
-            int empWage = 0;
-            int totalEmpWage = 0;
-            for (int day = 1; day < Num_Of_Working_Days; day++)
+            int totalEmpHrs = 0;
+            int totalWorkingDays = 0;
+            while(totalEmpHrs <= Max_Hrs_In_Month && totalWorkingDays < Num_Of_Working_Days)
             {
+                totalWorkingDays++;
                 Random random = new Random();
                 int cheCheck = random.Next(0, 3);
                 switch (cheCheck)
@@ -31,11 +34,11 @@ namespace EmployeeWageApp
                         empHrs = 0;
                         break;
                 }
-                empWage = empHrs * Emp_Rate_Per_Hour;
-                totalEmpWage  += empWage;
-                Console.WriteLine("Employee Daily Wage " + empWage);
+                totalEmpHrs += empHrs;
+                Console.WriteLine("Total Employee working days   " + totalWorkingDays);
             }
-            Console.WriteLine("Total empWage  " + totalEmpWage);
+            int totalEmpWage = totalEmpHrs * Emp_Rate_Per_Hour;
+            Console.WriteLine("Total EmpWage  " + totalEmpWage);
 
 
 
