@@ -7,11 +7,8 @@ namespace EmployeeWageApp
     {
         const int Part_Time = 1;
         const int Full_Time = 2;
-        const int Emp_Rate_Per_Hour = 20;
-        const int Num_Of_Working_Days = 20;
-        const int Max_Hrs_In_Month = 100;
-
-        public static int EmpWage()
+        
+        public static int EmpWage(String Company,int Emp_Rate_Per_Hour, int Num_Of_Working_Days, int Max_Hrs_In_Month)
         {
             int empHrs = 0;
             int totalEmpHrs = 0;
@@ -42,8 +39,10 @@ namespace EmployeeWageApp
         }
         static void Main(string[] args)
         {
-            EmpWage();
-  
+            EmpWage("SMart", 20, 20, 100);
+            EmpWage("Amezon", 40, 10, 130);
+            EmpWage("Microsoft", 70, 10, 140);
+
         }
     }
 }
