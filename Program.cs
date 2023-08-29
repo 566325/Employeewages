@@ -5,19 +5,18 @@ namespace EmployeeWageApp
 {
     internal class Program
     {
-        static void Main(string[] args)
-        {
-            const int Part_Time = 1;
-            const int Full_Time = 2;
-            const int Emp_Rate_Per_Hour = 20;
-            const int Num_Of_Working_Days = 20;
-            const int Max_Hrs_In_Month = 100;
+        const int Part_Time = 1;
+        const int Full_Time = 2;
+        const int Emp_Rate_Per_Hour = 20;
+        const int Num_Of_Working_Days = 20;
+        const int Max_Hrs_In_Month = 100;
 
-            
+        public static int EmpWage()
+        {
             int empHrs = 0;
             int totalEmpHrs = 0;
             int totalWorkingDays = 0;
-            while(totalEmpHrs <= Max_Hrs_In_Month && totalWorkingDays < Num_Of_Working_Days)
+            while (totalEmpHrs <= Max_Hrs_In_Month && totalWorkingDays < Num_Of_Working_Days)
             {
                 totalWorkingDays++;
                 Random random = new Random();
@@ -35,16 +34,16 @@ namespace EmployeeWageApp
                         break;
                 }
                 totalEmpHrs += empHrs;
-                Console.WriteLine("Total Employee working days   " + totalWorkingDays);
+                Console.WriteLine(" Days : " + totalWorkingDays +  "  Employee Hours :" + empHrs);
             }
             int totalEmpWage = totalEmpHrs * Emp_Rate_Per_Hour;
-            Console.WriteLine("Total EmpWage  " + totalEmpWage);
-
-
-
-
-
-
+            Console.WriteLine(" Total EmpWage  " + totalEmpWage);
+            return totalEmpWage;
+        }
+        static void Main(string[] args)
+        {
+            EmpWage();
+  
         }
     }
 }
