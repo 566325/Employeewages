@@ -7,13 +7,28 @@ namespace EmployeeWageApp
     {
         const int Part_Time = 1;
         const int Full_Time = 2;
-        
-        public static int EmpWage(String Company,int Emp_Rate_Per_Hour, int Num_Of_Working_Days, int Max_Hrs_In_Month)
+
+        String Company;
+        int Emp_Rate_Per_Hour;
+        int Num_Of_Working_Days;
+        int Max_Hrs_In_Month;
+        int Total_EmpWage;
+
+        public Program(String Company, int Emp_Rate_Per_Hour, int Num_Of_Working_Days, int Max_Hrs_In_Month)
+        {
+            this.Company = Company;
+            this.Emp_Rate_Per_Hour = Emp_Rate_Per_Hour;
+            this.Num_Of_Working_Days = Num_Of_Working_Days;
+            this.Max_Hrs_In_Month = Max_Hrs_In_Month;
+
+
+        }
+        public void EmpWage()
         {
             int empHrs = 0;
             int totalEmpHrs = 0;
             int totalWorkingDays = 0;
-            while (totalEmpHrs <= Max_Hrs_In_Month && totalWorkingDays < Num_Of_Working_Days)
+            while (totalEmpHrs <= this.Max_Hrs_In_Month && totalWorkingDays <this.Num_Of_Working_Days)
             {
                 totalWorkingDays++;
                 Random random = new Random();
@@ -31,17 +46,26 @@ namespace EmployeeWageApp
                         break;
                 }
                 totalEmpHrs += empHrs;
-                Console.WriteLine(" Days : " + totalWorkingDays +  "  Employee Hours :" + empHrs);
+                Console.WriteLine(" Days : " + totalWorkingDays +  "  Employee Hours :" + totalEmpHrs);
             }
-            int totalEmpWage = totalEmpHrs * Emp_Rate_Per_Hour;
-            Console.WriteLine(" Total EmpWage  " + totalEmpWage);
-            return totalEmpWage;
+            int totalEmpWage = totalEmpHrs * this.Emp_Rate_Per_Hour;
+            Console.WriteLine(" Total EmpWage for company: " + Company + " is :" + totalEmpWage);
+            
         }
+        public string toString()
+        {
+            return "Total EmpWage For Company :" + Company +" is " + Total_EmpWage;
+        }
+
         static void Main(string[] args)
         {
-            EmpWage("SMart", 20, 20, 100);
-            EmpWage("Amezon", 40, 10, 130);
-            EmpWage("Microsoft", 70, 10, 140);
+            Program Dmart = new Program("Dmart",20,8,100);
+            Program Walmart = new Program("Walmart", 30, 10, 120);
+            Dmart.EmpWage();
+            Console.WriteLine(Dmart.toString());
+            Walmart.EmpWage();
+            Console.WriteLine(Walmart.toString());
+
 
         }
     }
